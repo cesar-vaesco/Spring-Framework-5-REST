@@ -1,10 +1,18 @@
 package com.vaescode.di.atributo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Motor {
 
+	@Value("XL1")
 	private String marca;
+	@Value("1982")
 	private Integer modelo;
 
+	
 	public Motor() {
 	}
 
