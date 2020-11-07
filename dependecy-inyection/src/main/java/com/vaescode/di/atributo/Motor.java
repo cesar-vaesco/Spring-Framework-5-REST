@@ -1,22 +1,18 @@
 package com.vaescode.di.atributo;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Motor {
 
-	@Value("XL1")
 	private String marca;
-	@Value("1982")
+
 	private Integer modelo;
 
 	
-	public Motor() {
-	}
 
-	public Motor(String marca, Integer modelo) {
+	public Motor(@Value("XL1") String marca, @Value("1982") Integer modelo) {
 		this.marca = marca;
 		this.modelo = modelo;
 	}
@@ -41,7 +37,5 @@ public class Motor {
 	public String toString() {
 		return "Motor [marca=" + marca + ", modelo=" + modelo + "]";
 	}
-	
-	
 
 }
