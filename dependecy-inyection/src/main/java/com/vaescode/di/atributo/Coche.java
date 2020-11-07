@@ -20,13 +20,12 @@ public class Coche {
 
 	private Motor motor;
 
-	
-	public Coche() {}
-	/*public Coche(String marca, Integer modelo, Motor motor) {
-		this.marca = marca;
-		this.modelo = modelo;
-		this.motor = motor;
-	}*/
+	public Coche() {
+	}
+	/*
+	 * public Coche(String marca, Integer modelo, Motor motor) { this.marca = marca;
+	 * this.modelo = modelo; this.motor = motor; }
+	 */
 
 	public String getMarca() {
 		return marca;
