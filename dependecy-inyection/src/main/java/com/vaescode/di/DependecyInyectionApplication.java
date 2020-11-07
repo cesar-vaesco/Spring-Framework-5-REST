@@ -9,6 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import com.vaescode.di.atributo.Coche;
 import com.vaescode.di.qualifiers.Animal;
 import com.vaescode.di.qualifiers.Avion;
+import com.vaescode.di.qualifiers.Nido;
 import com.vaescode.di.qualifiers.Pajaro;
 import com.vaescode.di.qualifiers.Perro;
 
@@ -20,18 +21,11 @@ public class DependecyInyectionApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(DependecyInyectionApplication.class, args);
 
-		Perro perro = context.getBean(Perro.class);
-		Pajaro pajaro = context.getBean(Pajaro.class);
-		Avion avion = context.getBean(Avion.class);
-		Animal animal = context.getBean("perrito",Animal.class);
+		Nido nido = context.getBean(Nido.class);
+		
+		nido.imprimir();
 
 		
-		log.info("Objeto: {} ",perro.toString());
-		log.info("Objeto pajaro: nombre: {}, edad: {}", pajaro.getNombre(), pajaro.getEdad());
-		log.info("Objeto animal: nombre: {}, edad: {}", animal.getNombre(), animal.getEdad());
-		
-		
-		avion.volar();
 
 	}
 
