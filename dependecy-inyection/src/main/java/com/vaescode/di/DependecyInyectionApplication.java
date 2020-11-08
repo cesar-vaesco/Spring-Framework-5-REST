@@ -6,14 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import com.vaescode.di.atributo.Coche;
-import com.vaescode.di.profiles.DevEnvironment;
-import com.vaescode.di.profiles.EnvironmentService;
-import com.vaescode.di.qualifiers.Animal;
-import com.vaescode.di.qualifiers.Avion;
-import com.vaescode.di.qualifiers.Nido;
-import com.vaescode.di.qualifiers.Pajaro;
-import com.vaescode.di.qualifiers.Perro;
+import com.vaescode.di.scopes.EjemploScopeService;
 
 @SpringBootApplication
 public class DependecyInyectionApplication {
@@ -23,9 +16,12 @@ public class DependecyInyectionApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(DependecyInyectionApplication.class, args);
 
-		EnvironmentService environmentService = context.getBean(EnvironmentService.class);
+		EjemploScopeService ejemploScopeService = context.getBean(EjemploScopeService.class);
+		EjemploScopeService ejemploScopeService2 = context.getBean(EjemploScopeService.class);
 
-		log.info("Ambiente: {}", environmentService.getEnvironment());
+		log.info("Are bean.equal {} ",ejemploScopeService.equals(ejemploScopeService));
+		log.info("Are bean ==  {} ",ejemploScopeService == (ejemploScopeService2));
+
 
 	}
 
