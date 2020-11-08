@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import com.vaescode.di.atributo.Coche;
+import com.vaescode.di.profiles.DevEnvironment;
+import com.vaescode.di.profiles.EnvironmentService;
 import com.vaescode.di.qualifiers.Animal;
 import com.vaescode.di.qualifiers.Avion;
 import com.vaescode.di.qualifiers.Nido;
@@ -21,11 +23,9 @@ public class DependecyInyectionApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(DependecyInyectionApplication.class, args);
 
-		Nido nido = context.getBean(Nido.class);
-		
-		nido.imprimir();
+		EnvironmentService environmentService = context.getBean(EnvironmentService.class);
 
-		
+		log.info("Ambiente: {}", environmentService.getEnvironment());
 
 	}
 
