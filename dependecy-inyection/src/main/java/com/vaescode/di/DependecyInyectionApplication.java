@@ -11,6 +11,7 @@ import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 
 import com.vaescode.di.autowired.AreaCalculadoraService;
+import com.vaescode.di.lifecycle.LifeCycleBean;
 import com.vaescode.di.scopes.EjemploScopeService;
 
 @SpringBootApplication
@@ -31,11 +32,10 @@ public class DependecyInyectionApplication {
 
 	
 	public static void main(String[] args) {
-		/*https://docs.spring.io/spring-framework/docs/3.0.x/reference/expressions.html*/
-		ExpressionParser parser = new SpelExpressionParser();
-		Expression expression = parser.parseExpression("20 <= 0"); 
-		log.info("Result {}", expression.getValue());
+		ConfigurableApplicationContext context =  SpringApplication.run(DependecyInyectionApplication.class, args); 
 
+		LifeCycleBean bean = context.getBean(LifeCycleBean.class);
+		
 	}
 
 }
