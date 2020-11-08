@@ -6,12 +6,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class Circle implements Figure{
 
-	@Value("2.5")
-	private double side;
 	
+	
+	//@Value("${circle.radius:1}") También es posible declarar una propiedad con un valor por default 
+	@Value("${circle.radius}")
+	private double radius;
+
 	@Override
 	public double calculadoraArea() {
-		return side * side;
+
+		return Math.PI * Math.pow(radius, 2);
 	}
 
 }

@@ -16,15 +16,15 @@ public class AreaCalculadoraService {
 	private List<Figure> figures;
 
 	public double calcularAreas() {
-		//double area = 0;
+		double area = 0;
 		
-		/*for (Figure figure : figures) {
+		for (Figure figure : figures) {
 			area += figure.calculadoraArea();
 			log.info("Area: {}", area);
 
 		}
-		return area; */
+		return area; 
 
-		return figures.stream().mapToDouble(f-> f.calculadoraArea()).sum();
+		//return figures.stream().mapToDouble(f-> f.calculadoraArea()).sum();
 	}
 }

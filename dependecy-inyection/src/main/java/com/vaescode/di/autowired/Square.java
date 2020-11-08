@@ -6,13 +6,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class Square implements Figure {
 
-	@Value("2.5")
-	private double radius;
+	/*También es posible declarar una propiedad con un valor por default en caso de que el valor no 
+	 * sea declarado en el archivo de configuración*/
+	@Value("${square.side:5}")
+	private double side;
 
 	@Override
 	public double calculadoraArea() {
-
-		return Math.PI * Math.pow(radius, 2);
+		return side * side;
 	}
-
 }
