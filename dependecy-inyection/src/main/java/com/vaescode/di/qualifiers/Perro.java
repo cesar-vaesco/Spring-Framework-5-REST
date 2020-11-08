@@ -3,8 +3,7 @@ package com.vaescode.di.qualifiers;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-
-@Component("perrito")
+@Component
 public class Perro extends Animal {
 
 	public Perro(@Value("Rocky") String nombre, @Value("1") Integer edad) {
@@ -14,8 +13,7 @@ public class Perro extends Animal {
 
 	@Override
 	public String toString() {
-		return "Perro -> Nombre: " + getNombre() + ", Edad: " + getEdad()+ " año" ;
+		return "Perro -> Nombre: " + getNombre() + ", Edad: " + getEdad() + " año";
 	}
 
-	
 }

@@ -12,7 +12,6 @@ public class Nido {
 private static final Logger log = LoggerFactory.getLogger(Nido.class);
 
 	@Autowired
-	@Qualifier("pajarito")
 	private Animal animal;
 	
 	public void imprimir() {
