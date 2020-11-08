@@ -6,6 +6,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.expression.Expression;
+import org.springframework.expression.ExpressionParser;
+import org.springframework.expression.spel.standard.SpelExpressionParser;
 
 import com.vaescode.di.autowired.AreaCalculadoraService;
 import com.vaescode.di.scopes.EjemploScopeService;
@@ -28,14 +31,10 @@ public class DependecyInyectionApplication {
 
 	
 	public static void main(String[] args) {
-		ConfigurableApplicationContext context = SpringApplication.run(DependecyInyectionApplication.class, args);
-
-		AreaCalculadoraService calculadoraService = context.getBean(AreaCalculadoraService.class);
-		
-		
-		
-		log.info("Areas: {}", calculadoraService.calcularAreas());
-
+		/*https://docs.spring.io/spring-framework/docs/3.0.x/reference/expressions.html*/
+		ExpressionParser parser = new SpelExpressionParser();
+		Expression expression = parser.parseExpression("20 <= 0"); 
+		log.info("Result {}", expression.getValue());
 
 	}
 
