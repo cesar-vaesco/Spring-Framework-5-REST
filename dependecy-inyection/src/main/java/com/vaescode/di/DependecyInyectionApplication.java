@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+import com.vaescode.di.autowired.AreaCalculadoraService;
 import com.vaescode.di.scopes.EjemploScopeService;
 
 @SpringBootApplication
@@ -29,9 +30,12 @@ public class DependecyInyectionApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(DependecyInyectionApplication.class, args);
 
-		String nombreAplicacion = context.getBean(String.class);
+		AreaCalculadoraService calculadoraService = context.getBean(AreaCalculadoraService.class);
 		
-		log.info("Nombre de la aplicacion {}", nombreAplicacion);
+		
+		
+		log.info("Areas: {}", calculadoraService.calcularAreas());
+
 
 	}
 
