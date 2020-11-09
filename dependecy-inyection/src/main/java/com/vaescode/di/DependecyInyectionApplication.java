@@ -6,6 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import com.vaescode.di.oap.TargetObject;
+
 @SpringBootApplication
 public class DependecyInyectionApplication {
 
@@ -14,6 +16,10 @@ public class DependecyInyectionApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(DependecyInyectionApplication.class, args);
 
+		TargetObject object = context.getBean(TargetObject.class);
+		
+		object.hello("Hola AOP");
+		object.foo();
 	}
 
 }
