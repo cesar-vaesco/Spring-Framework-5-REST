@@ -8,6 +8,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import com.vaescode.di.lifecycle.ExplicitBean;
 import com.vaescode.di.lifecycle.LifeCycleBean;
+import com.vaescode.di.lifecycle.lazy.BeanA;
+import com.vaescode.di.lifecycle.lazy.BeanB;
 
 @SpringBootApplication
 public class DependecyInyectionApplication {
@@ -33,7 +35,6 @@ public class DependecyInyectionApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context =  SpringApplication.run(DependecyInyectionApplication.class, args); 
 		
-		LifeCycleBean bean = context.getBean(LifeCycleBean.class);
 		
 	}
 
