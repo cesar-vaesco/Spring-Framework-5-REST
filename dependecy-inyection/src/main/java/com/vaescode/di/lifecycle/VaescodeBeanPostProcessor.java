@@ -13,14 +13,20 @@ public class VaescodeBeanPostProcessor implements BeanPostProcessor {
 
 	@Override
 	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-		log.info("Antes de inicializar{}", beanName);
+		
+		if(bean instanceof LifeCycleBean) {
+			log.info("Antes de inicializar{}", beanName);
+		}
 
 		return bean;
 	}
 
 	@Override
 	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-		log.info("Después de inicializar{}", beanName);
+		if(bean instanceof LifeCycleBean) {
+			log.info("Después de inicializar{}", beanName);			
+		}
+		
 		return bean;
 	}
 
