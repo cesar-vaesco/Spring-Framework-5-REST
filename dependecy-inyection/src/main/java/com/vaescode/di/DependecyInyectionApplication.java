@@ -24,11 +24,12 @@ public class DependecyInyectionApplication {
 		return ": VAESCODE";
 	}
 	
+	/*
 	@Bean(initMethod = "init", destroyMethod = "destroy")
 	public ExplicitBean getBean() {
 		return new ExplicitBean();
 	}
-	
+	*/
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context =  SpringApplication.run(DependecyInyectionApplication.class, args); 
 		
