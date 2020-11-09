@@ -17,9 +17,8 @@ public class DependecyInyectionApplication {
 		ConfigurableApplicationContext context = SpringApplication.run(DependecyInyectionApplication.class, args);
 
 		TargetObject object = context.getBean(TargetObject.class);
-		
+
 		object.hello("Hola AOP");
 		object.foo();
 	}
-
 }
