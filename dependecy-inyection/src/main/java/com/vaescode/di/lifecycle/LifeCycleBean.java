@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 //@Scope("prototype") -- @PreDestroy n se ejecuta para bean de ambito prototype
-@Lazy
+@Lazy(false)
 public class LifeCycleBean implements BeanNameAware, InitializingBean, DisposableBean {
 
 	private static final Logger log = LoggerFactory.getLogger(LifeCycleBean.class);

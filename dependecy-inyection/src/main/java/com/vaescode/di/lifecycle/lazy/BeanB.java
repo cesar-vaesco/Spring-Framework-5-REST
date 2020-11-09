@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
-@Lazy(false)
+@Lazy
 public class BeanB {
 
 	//El bean  "b" carga el bean "a" aunque este tenga carga perezosa "lazy"
