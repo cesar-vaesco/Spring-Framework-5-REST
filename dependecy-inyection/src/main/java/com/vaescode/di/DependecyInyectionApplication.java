@@ -6,13 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.expression.Expression;
-import org.springframework.expression.ExpressionParser;
-import org.springframework.expression.spel.standard.SpelExpressionParser;
-
-import com.vaescode.di.autowired.AreaCalculadoraService;
+import com.vaescode.di.lifecycle.ExplicitBean;
 import com.vaescode.di.lifecycle.LifeCycleBean;
-import com.vaescode.di.scopes.EjemploScopeService;
 
 @SpringBootApplication
 public class DependecyInyectionApplication {
@@ -29,11 +24,14 @@ public class DependecyInyectionApplication {
 		return ": VAESCODE";
 	}
 	
-
+	@Bean(initMethod = "init", destroyMethod = "destroy")
+	public ExplicitBean getBean() {
+		return new ExplicitBean();
+	}
 	
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context =  SpringApplication.run(DependecyInyectionApplication.class, args); 
-
+		
 		LifeCycleBean bean = context.getBean(LifeCycleBean.class);
 		
 	}
