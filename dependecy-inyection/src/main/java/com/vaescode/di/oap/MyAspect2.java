@@ -12,12 +12,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
-@Order(1)
-public class MyAspect {
+@Order(0)
+public class MyAspect2 {
 
-	private static final Logger log = LoggerFactory.getLogger(MyAspect.class);
+	private static final Logger log = LoggerFactory.getLogger(MyAspect2.class);
 
-	@Before("execution(* com.vaescode.di.oap.TargetObject.hello(..))")
+	@Before("execution(* com.vaescode.di.oap.TargetObject.foo(..))")
 	public void before(JoinPoint joinPoint) {
 		log.info("Method name: {}", joinPoint.getSignature().getName());
 		log.info("Object type: {}", joinPoint.getSignature().getDeclaringType());
@@ -26,10 +26,7 @@ public class MyAspect {
 		log.info("Arguments: {} ", joinPoint.getArgs());
 
 		log.info("Before advice");
-		
-		log.info("El orden en que el aspecto se va a mostrar es según el orden declarado en la anotación Order donde 0 sera el de primer orden");
 	}
-	
 	
 
 }
