@@ -58,6 +58,11 @@ public class UserService {
 		return userToBeUpdate;
 		
 	}
+	
+	public void deleteUser(String username ) {
+		User userDelete = getUserByUsername(username);
+		users.remove(userDelete);
+	}
 
 	
 }
