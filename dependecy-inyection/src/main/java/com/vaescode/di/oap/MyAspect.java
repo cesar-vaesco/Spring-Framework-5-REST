@@ -17,7 +17,7 @@ public class MyAspect {
 
 	private static final Logger log = LoggerFactory.getLogger(MyAspect.class);
 
-	@Before("execution(* com.vaescode.di.oap.TargetObject.hello(..))")
+	@Before("PointExample.targetObjectMethods()")
 	public void before(JoinPoint joinPoint) {
 		log.info("Method name: {}", joinPoint.getSignature().getName());
 		log.info("Object type: {}", joinPoint.getSignature().getDeclaringType());
