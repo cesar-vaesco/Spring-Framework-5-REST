@@ -11,6 +11,7 @@ public class TargetObject {
 	private static final Logger log = LoggerFactory.getLogger(TargetObject.class);
 
 	
+	@VaescodeAnotation
 	public void hello(String message) {
 		log.info(message);
 	}
