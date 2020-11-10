@@ -33,8 +33,19 @@ public class UserService {
 	}
 
 	public User getUserByUsername(String username) {
-		return users.stream().filter(u -> u.getUserName().equals(username)).findAny()
-				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-						String.format("User %s not found", username)));
+		return users.stream().filter(u -> u.getUserName().equals(username)).findAny().orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("User %s not found", username)));
+	}
+
+	public User createUser(User user) {
+
+		// Validar que no exista ya un usuario registrado
+		if (users.stream().anyMatch(u -> u.getUserName().equals(user.getUserName()))) {
+			throw new ResponseStatusException(HttpStatus.CONFLICT,
+					String.format("User %s already exist", user.getUserName()));
+		}
+		// Registrar un nuevo usuario
+		users.add(user);
+		return user;
 	}
 }
