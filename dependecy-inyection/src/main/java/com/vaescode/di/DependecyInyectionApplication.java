@@ -18,7 +18,7 @@ public class DependecyInyectionApplication {
 
 		TargetObject object = context.getBean(TargetObject.class);
 
-		object.hello("Hola AOP");
+		object.hello("Hello world");
 		object.foo();
 	}
 }

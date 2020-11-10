@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 public class PointExample {
 
 	//@Pointcut("execution(* com.vaescode.di.oap.TargetObject.*(..))")
-	@Pointcut("within(com.vaescode.di.oap.*)")
+	@Pointcut("within(com.vaescode.di.oap.TargetObject*)")
 	public void targetObjectMethods() {}
 }
