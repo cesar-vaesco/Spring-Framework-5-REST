@@ -12,4 +12,5 @@ public class VaescodeControllers {
 	public String helloWorld() {
 		return "Hello world";
 	}
+
 }
