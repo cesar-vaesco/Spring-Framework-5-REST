@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vaescode.users.models.User;
-import com.vaescode.users.services.UserService;
+import com.vaescode.users.services.UserServiceList;
 
 @RestController
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/v1/users")
+public class UserControllerList {
 
 	@Autowired
-	private UserService userService;
+	private UserServiceList userService;
 
 	/*
 	 * podemos usar @RequestParam para extraer parámetros de consulta,

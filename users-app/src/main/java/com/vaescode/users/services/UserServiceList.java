@@ -15,7 +15,7 @@ import com.github.javafaker.Faker;
 import com.vaescode.users.models.User;
 
 @Service
-public class UserService {
+public class UserServiceList {
 
 	@Autowired
 	private Faker faker;
