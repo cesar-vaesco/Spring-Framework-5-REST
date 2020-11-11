@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vaescode.users.models.User;
@@ -25,12 +26,15 @@ public class UserController {
 	private UserService userService;
 
 	/*
-	 * Los métodos utilizados para solicitar un recurso se llaman handler method los
-	 * cuales estan compuesos por un método HTTP y un recurso
+	 * podemos usar @RequestParam para extraer parámetros de consulta,
+	 *  parámetros de formulario e incluso archivos de la solicitud.
+	 * 
+	 * Al método getUsers se ha agregado un parametro para buscar segun determinado dato de consulta
+	 *  o buscando filtar información
 	 */
 	@GetMapping
-	public ResponseEntity<List<User>> getUsers() {
-		return new ResponseEntity<List<User>>(userService.getUsers(), HttpStatus.OK);
+	public ResponseEntity<List<User>> getUsers(@RequestParam(value= "startWith", required = false) String startWith) {
+		return new ResponseEntity<List<User>>(userService.getUsers(startWith), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/{username}")
@@ -43,16 +47,18 @@ public class UserController {
 		return new ResponseEntity<User>(userService.createUser(user), HttpStatus.CREATED);
 	}
 
-	/*Aunque se quiera modificar el username, la aplicación toma el nombre pasado como parametro y 
-	 * lo persiste en el cuerpo de la petición: este método puede modificar los datos de nickname y password
-	 * pero no el de el usuario*/
+	/*
+	 * Aunque se quiera modificar el username, la aplicación toma el nombre pasado
+	 * como parametro y lo persiste en el cuerpo de la petición: este método puede
+	 * modificar los datos de nickname y password pero no el de el usuario
+	 */
 	@PutMapping(value = "/{username}")
 	public ResponseEntity<User> updateUser(@PathVariable("username") String username, @RequestBody User user) {
 		return new ResponseEntity<User>(userService.updateUser(user, username), HttpStatus.OK);
 	}
-	
+
 	@DeleteMapping("/{username}")
-	public ResponseEntity<Void> deleteUser(@PathVariable("username") String username){
+	public ResponseEntity<Void> deleteUser(@PathVariable("username") String username) {
 		userService.deleteUser(username);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
