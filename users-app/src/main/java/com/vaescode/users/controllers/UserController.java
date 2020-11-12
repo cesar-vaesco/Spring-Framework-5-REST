@@ -22,11 +22,22 @@ public class UserController {
 	@Autowired
 	private UserService service;
 
-	/*http://localhost:8080/users?page=1&size=1000 
-	 * Se indica la pagina a ver y cantidad de registros que se van a ver en las páginas
+	/*
+	 * http://localhost:8080/users?page=1&size=1000 Se indica la pagina a ver y
+	 * cantidad de registros que se van a ver en las páginas
+	 */
+	
+	/*
+	 * http://localhost:8080/users -> al agregar a los parametros valores de inicialización 
+	 * se puede mostrar  la paginación con valores por default
+	 * PAra el ejemplo se inicializaron 100000 registros y por default se inicia en la página 0 y esta página
+	 * muestra 1000 registros
+	 * 
 	 * */
 	@GetMapping
-	public ResponseEntity<Page<User>> getUsers(@RequestParam("page") int page, @RequestParam("size") int size) {
+	public ResponseEntity<Page<User>> getUsers(
+			@RequestParam(required = false, value = "page", defaultValue = "0") int page,
+			@RequestParam(required = false, value = "size", defaultValue = "1000") int size) {
 		return new ResponseEntity<>(service.getUsers(page, size), HttpStatus.OK);
 	}
 
