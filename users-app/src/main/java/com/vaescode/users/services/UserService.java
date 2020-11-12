@@ -1,5 +1,7 @@
 package com.vaescode.users.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,6 +23,11 @@ public class UserService {
 		
 	}
 	
+	public List<String> getUsernames() {
+		
+		return userRepository.findUsernames();
+	}
+
 
 	public User getUserById(Integer userId) {
 		return userRepository.findById(userId).orElseThrow(
@@ -42,4 +49,8 @@ public class UserService {
 		return userRepository.findByUsernameAndPassword(username, password).orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("User %s not found", password)));
 	}
+
+	
+
+	
 }

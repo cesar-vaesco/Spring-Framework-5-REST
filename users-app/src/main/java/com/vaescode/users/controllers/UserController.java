@@ -1,5 +1,7 @@
 package com.vaescode.users.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -26,14 +28,22 @@ public class UserController {
 	 * http://localhost:8080/users?page=1&size=1000 Se indica la pagina a ver y
 	 * cantidad de registros que se van a ver en las páginas
 	 */
-	
+
 	/*
-	 * http://localhost:8080/users -> al agregar a los parametros valores de inicialización 
-	 * se puede mostrar  la paginación con valores por default
-	 * PAra el ejemplo se inicializaron 100000 registros y por default se inicia en la página 0 y esta página
-	 * muestra 1000 registros
+	 * http://localhost:8080/users -> al agregar a los parametros valores de
+	 * inicialización se puede mostrar la paginación con valores por default PAra el
+	 * ejemplo se inicializaron 100000 registros y por default se inicia en la
+	 * página 0 y esta página muestra 1000 registros
 	 * 
-	 * */
+	 */
+	
+	/*LA lista es de String por que los datos que se van a listar son datos de tipo String*/
+	@GetMapping("/usernames")
+	public ResponseEntity <List<String>> getUsernames(){
+		return new ResponseEntity<>( service.getUsernames(),HttpStatus.OK) ;
+	}
+	
+
 	@GetMapping
 	public ResponseEntity<Page<User>> getUsers(
 			@RequestParam(required = false, value = "page", defaultValue = "0") int page,
