@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vaescode.users.entities.User;
 import com.vaescode.users.services.UserService;
 
+import io.micrometer.core.annotation.Timed;
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -47,6 +49,7 @@ public class UserController {
 	
 
 	@GetMapping
+	@Timed("get.users")
 	public ResponseEntity<Page<User>> getUsers(
 			@RequestParam(required = false, value = "page", defaultValue = "0") int page,
 			@RequestParam(required = false, value = "size", defaultValue = "1000") int size) {
