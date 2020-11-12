@@ -23,9 +23,9 @@ public class UserService {
 		
 	}
 	
-	public List<String> getUsernames() {
+	public Page<String> getUsernames(int page, int size) {
 		
-		return userRepository.findUsernames();
+		return userRepository.findUsernames(PageRequest.of(page, size));
 	}
 
 

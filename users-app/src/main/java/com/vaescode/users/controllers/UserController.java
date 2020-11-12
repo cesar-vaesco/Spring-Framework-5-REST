@@ -39,8 +39,10 @@ public class UserController {
 	
 	/*LA lista es de String por que los datos que se van a listar son datos de tipo String*/
 	@GetMapping("/usernames")
-	public ResponseEntity <List<String>> getUsernames(){
-		return new ResponseEntity<>( service.getUsernames(),HttpStatus.OK) ;
+	public ResponseEntity <Page<String>> getUsernames(
+			@RequestParam(required = false, value = "page", defaultValue = "0") int page,
+			@RequestParam(required = false, value = "size", defaultValue = "1000") int size){
+		return new ResponseEntity<>( service.getUsernames(page, size),HttpStatus.OK) ;
 	}
 	
 
