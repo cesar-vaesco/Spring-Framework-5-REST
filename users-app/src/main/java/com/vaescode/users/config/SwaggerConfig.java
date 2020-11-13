@@ -25,18 +25,17 @@ public class SwaggerConfig {
 
 	@Bean
 	public Docket api() {
-	return new Docket(DocumentationType.SWAGGER_2)
-			.apiInfo(getApiInfo())
-	.select().apis(RequestHandlerSelectors.basePackage("com.vaescode.users.controllers"))
-	.paths(PathSelectors.any()).build();
+		return new Docket(DocumentationType.SWAGGER_2).apiInfo(getApiInfo())
+//			.select().apis(RequestHandlerSelectors.any())
+				.select().apis(RequestHandlerSelectors.basePackage("com.vaescode.users.controllers"))				
+				//.paths(PathSelectors.any()).build();
+				.paths(PathSelectors.ant("/users/*")).build();
+		//Exponer sobre un paquete de controllers solamente las apis expuestas en el controllador users
 	}
 
 	private ApiInfo getApiInfo() {
 		// TODO Auto-generated method stub
-		return new ApiInfoBuilder()
-				.title("Vaescode Api")
-				.version("1.0")
-				.license("Apache 2.0")
+		return new ApiInfoBuilder().title("Vaescode Api").version("1.0").license("Apache 2.0")
 				.contact(new Contact("@vargas_dev", "https://twitter.com/vargas_dev", "cesarvargasescorcia@gmail.com"))
 				.build();
 	}
