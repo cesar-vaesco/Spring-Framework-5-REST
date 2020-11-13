@@ -27,10 +27,14 @@ public class SwaggerConfig {
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).apiInfo(getApiInfo())
 //			.select().apis(RequestHandlerSelectors.any())
-				.select().apis(RequestHandlerSelectors.basePackage("com.vaescode.users.controllers"))				
-				//.paths(PathSelectors.any()).build();
-				.paths(PathSelectors.ant("/users/*")).build();
-		//Exponer sobre un paquete de controllers solamente las apis expuestas en el controllador users
+				.select().apis(RequestHandlerSelectors.basePackage("com.vaescode.users.controllers"))
+				.paths(PathSelectors.any()).build();
+		// .useDefaultResponseMessages(false); -> permite mostrar el status de retorno
+		// que se a declarado, para el ejemplo 200, 404 
+
+		// .paths(PathSelectors.ant("/users/*")).build();
+		// Exponer sobre un paquete de controllers solamente las apis expuestas en el
+		// controllador users
 	}
 
 	private ApiInfo getApiInfo() {

@@ -18,6 +18,9 @@ import com.vaescode.users.entities.User;
 import com.vaescode.users.services.UserService;
 
 import io.micrometer.core.annotation.Timed;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("/users")
@@ -38,15 +41,17 @@ public class UserController {
 	 * página 0 y esta página muestra 1000 registros
 	 * 
 	 */
-	
-	/*LA lista es de String por que los datos que se van a listar son datos de tipo String*/
+
+	/*
+	 * LA lista es de String por que los datos que se van a listar son datos de tipo
+	 * String
+	 */
 	@GetMapping("/usernames")
-	public ResponseEntity <Page<String>> getUsernames(
+	public ResponseEntity<Page<String>> getUsernames(
 			@RequestParam(required = false, value = "page", defaultValue = "0") int page,
-			@RequestParam(required = false, value = "size", defaultValue = "1000") int size){
-		return new ResponseEntity<>( service.getUsernames(page, size),HttpStatus.OK) ;
+			@RequestParam(required = false, value = "size", defaultValue = "1000") int size) {
+		return new ResponseEntity<>(service.getUsernames(page, size), HttpStatus.OK);
 	}
-	
 
 	@GetMapping
 	@Timed("get.users")
@@ -57,6 +62,9 @@ public class UserController {
 	}
 
 	@GetMapping("/{userId}")
+	@ApiOperation(value = "Returns a user for a given user id", response = User.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "The record was found"),
+			@ApiResponse(code = 404, message = "The record was not found") })
 	public ResponseEntity<User> getUserById(@PathVariable("userId") Integer userId) {
 		return new ResponseEntity<>(service.getUserById(userId), HttpStatus.OK);
 	}
