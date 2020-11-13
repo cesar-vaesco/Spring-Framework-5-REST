@@ -48,18 +48,24 @@
 			<artifactId>micrometer-registry-prometheus</artifactId>
 		</dependency>
 		<!-- Dependencias *****Swagger**** -->
-		<!-- Para exponer la documentaciòn en un archivo en formato json-->
+		<!-- Para exponer la documentaciòn en un archivo en formato json -->
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
 			<version>2.9.2</version>
 		</dependency>
-		<!-- Para visualizar la documentaciòn en una interfaz de usuario-->
+		<!-- Para visualizar la documentaciòn en una interfaz de usuario -->
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.9.2</version>
 		</dependency>
+		<!-- Spring-boot-cache -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
