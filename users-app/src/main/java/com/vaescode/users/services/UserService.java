@@ -49,6 +49,11 @@ public class UserService {
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("User %s not found", username)));
 	}
 
+	public void deleteUserByUsername(String username) {
+		User user = getUserByUsername(username);
+		userRepository.delete(user);
+	}
+
 	public User getUserByPassword(String password) {
 		return userRepository.findByPassword(password).orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("User %d not found", password)));
