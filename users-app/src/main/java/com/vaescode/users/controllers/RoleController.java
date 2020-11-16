@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vaescode.users.entities.Role;
-import com.vaescode.users.models.User;
 import com.vaescode.users.services.RoleService;
 
 @RestController
