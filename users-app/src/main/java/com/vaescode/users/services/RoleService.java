@@ -22,8 +22,8 @@ public class RoleService {
 	@Autowired
 	private UserInRoleRepository inRoleRepository;
 	
-	public List<User> getUsersByRole(String roleName){
-		return inRoleRepository.findUsersByRole(roleName);
+	public List<User> getUsersByRoleName(String roleName){
+		return inRoleRepository.findUsersByRoleName(roleName);
 	}
 
 	public List<Role> getRoles() {

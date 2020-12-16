@@ -23,6 +23,6 @@ public class UserInRoleController {
 	
 	@GetMapping("/{roleName}/users")
 	public ResponseEntity<List<User>> getUsersByRole(@PathVariable("roleName") String roleName) {
-		return new ResponseEntity<List<User>>(service.getUsersByRole(roleName), HttpStatus.OK);
+		return new ResponseEntity<List<User>>(service.getUsersByRoleName(roleName), HttpStatus.OK);
 	}
 }

@@ -2,6 +2,8 @@ package com.vaescode.users;
 
 import java.util.Random;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -31,6 +33,8 @@ public class UsersAppApplication implements ApplicationRunner {
 	@Autowired
 	private UserInRoleRepository userInRoleRepository;
 
+	private static final Logger log = LoggerFactory.getLogger(UsersAppApplication.class);
+
 	public static void main(String[] args) {
 		SpringApplication.run(UsersAppApplication.class, args);
 	}
@@ -48,7 +52,10 @@ public class UsersAppApplication implements ApplicationRunner {
 			user.setPassword(faker.dragonBall().character());
 			// user.setProfile(null);
 			User created = repository.save(user);
+
 			UserInRole userInRole = new UserInRole(created, roles[new Random().nextInt(3)]);
+			log.info("User created username: {} - password: {} - role: {}", created.getUsername(), created.getPassword(),
+					userInRole.getRole().getName());
 			userInRoleRepository.save(userInRole);
 		}
 

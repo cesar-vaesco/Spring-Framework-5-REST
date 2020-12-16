@@ -13,5 +13,7 @@ import com.vaescode.users.entities.UserInRole;
 public interface UserInRoleRepository extends JpaRepository<UserInRole, Integer> {
 
 	@Query("SELECT u.user FROM UserInRole u WHERE u.role.name=?1") 
-	public List<User> findUsersByRole(String roleName);
+	public List<User> findUsersByRoleName(String roleName);
+	
+	public List<UserInRole> findByUser(User user);
 }
