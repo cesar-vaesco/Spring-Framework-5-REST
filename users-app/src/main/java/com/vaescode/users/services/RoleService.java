@@ -9,13 +9,22 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.vaescode.users.entities.Role;
+import com.vaescode.users.entities.User;
 import com.vaescode.users.repositories.RoleRepository;
+import com.vaescode.users.repositories.UserInRoleRepository;
 
 @Service
 public class RoleService {
 
 	@Autowired
 	private RoleRepository repository;
+	
+	@Autowired
+	private UserInRoleRepository inRoleRepository;
+	
+	public List<User> getUsersByRole(String roleName){
+		return inRoleRepository.findUsersByRole(roleName);
+	}
 
 	public List<Role> getRoles() {
 
